@@ -8,28 +8,23 @@ const input = document.querySelector("#item__input");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-
+  if (input.value === "") return;
   // 1. Create a new item
   const listItem = document.createElement("div");
   listItem.innerText = input.value; // We give the list item the value of input
   listItem.classList.add("list__item"); // We add a div with the class list__item
+  const listButton = document.createElement("button");
+  listButton.innerText = "Remove"; // We give the button the text "Add to list"
+  listButton.classList.add("list__button");
   // 2. Add that item to the list
-  list.appendChild(listItem)
+  list.appendChild(listItem);
+  list.appendChild(listButton);
   // 3.remove input value
-  input.value = '';
-  //delete list item from list if clicked 
-  listItem.addEventListener('click', event=>{
+  input.value = "";
+  //delete list item from list if clicked
 
-listItem.remove()
-  })
-  
-
-
-  
-
-
-
-
-
-  
+  listButton.addEventListener("click", (event) => {
+    listItem.remove();
+    listButton.remove();
+  });
 });
